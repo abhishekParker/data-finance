@@ -1,0 +1,48 @@
+import React, { useState } from "react";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
+const Navbar = () => {
+  const [nav, setNav] = useState(true);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  return (
+    <div className="flex justify-between items-center h-20 max-w-[1240px] m-auto px-4">
+      <h1 className="w-full text-[#00df9a] uppercase text-3xl font-bold">
+        React.
+      </h1>
+      <ul className="hidden md:flex text-white font-medium">
+        <li className="p-4">Home</li>
+        <li className="p-4">Company</li>
+        <li className="p-4">Resources</li>
+        <li className="p-4">About</li>
+        <li className="p-4">Contacts</li>
+      </ul>
+      <div className="text-white block md:hidden" onClick={handleNav}>
+        {!nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+      </div>
+      <div
+        className={
+          !nav
+            ? "fixed top-0 left-0 border-r border-r-gray-900 w-[60%] h-full bg-[#000300] ease-in-out duration-500 md:left-[-100%]"
+            : "fixed top-0 left-[-100%] border-r ease-in-out duration-500"
+        }
+      >
+        <h1 className="w-full text-[#00df9a] uppercase text-3xl font-bold m-4">
+          React.
+        </h1>
+        <ul className="text-white uppercase p-4 font-medium">
+          <li className="p-4 border-b border-gray-600">Home</li>
+          <li className="p-4 border-b border-gray-600">Company</li>
+          <li className="p-4 border-b border-gray-600">Resources</li>
+          <li className="p-4 border-b border-gray-600">About</li>
+          <li className="p-4 ">Contacts</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
